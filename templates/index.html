@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор размера рынка</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container my-5 d-flex flex-column align-items-center">
+        <div class="form-container text-right">
+            <h1 class="mb-4">Калькулятор размера рынка</h1>
+            <form id="market-form">
+                <div class="form-group">
+                    <label for="unit">Единица измерения:</label>
+                    <select class="form-control" id="unit">
+                        <option value="млн.руб">млн.руб.</option>
+                        <option value="млрд.руб">млрд.руб.</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pam">PAM (Потенциально доступный рынок):</label>
+                    <input type="number" class="form-control" id="pam" placeholder="Введите PAM" required>
+                </div>
+                <div class="form-group">
+                    <label for="tam-percent">TAM (% от PAM):</label>
+                    <input type="number" class="form-control wide" id="tam-percent" placeholder="Введите TAM (%)" min="0" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="sam-percent">SAM (% от TAM):</label>
+                    <input type="number" class="form-control wide" id="sam-percent" placeholder="Введите SAM (%)" min="0" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="som-percent">SOM (% от SAM):</label>
+                    <input type="number" class="form-control wide" id="som-percent" placeholder="Введите SOM (%)" min="0" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="conversion-rate">Коэффициент конверсии (%):</label>
+                    <input type="number" class="form-control" id="conversion-rate" placeholder="Введите коэффициент конверсии" min="0" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="growth-rate">Годовой темп роста (%):</label>
+                    <input type="number" class="form-control" id="growth-rate" placeholder="Введите годовой темп роста" min="0" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Себестоимость проекта:</label>
+                    <input type="number" step="0.01" class="form-control" id="cost" placeholder="Введите себестоимость проекта" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Рассчитать</button>
+            </form>
+        </div>
+        <div class="chart-container">
+            <div id="result" class="w-100">
+                <h2>Диаграмма размера рынка</h2>
+            </div>
+        </div>
+        <div class="forecast-container">
+            <div id="forecast" class="w-100">
+                <h2>Прогноз финансовых результатов</h2>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
